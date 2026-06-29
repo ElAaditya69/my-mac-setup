@@ -6,6 +6,8 @@
 
 A highly optimized tiling window manager setup...
 
+A highly optimized tiling window manager setup...
+
 
 ## 📸 Screenshots
 ![Desktop Preview](screenshots/desktop.png)
