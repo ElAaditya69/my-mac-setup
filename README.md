@@ -4,7 +4,8 @@
 ![Window Manager](https://shields.io)
 ![Terminal](https://shields.io)
 
-A highly optimized tiling window manager setup for macOS Sequoia running on Apple Silicon (M4), built using Yabai, SKHD, and Kitty terminal.
+A highly optimized tiling window manager setup...
+
 
 ## 📸 Screenshots
 ![Desktop Preview](screenshots/desktop.png)
