@@ -1,5 +1,9 @@
 # 🐉 macOS Sequoia Minimalist Rice
 
+![macOS](https://shields.io)
+![Window Manager](https://shields.io)
+![Terminal](https://shields.io)
+
 A highly optimized tiling window manager setup for macOS Sequoia running on Apple Silicon (M4), built using Yabai, SKHD, and Kitty terminal.
 
 ## 📸 Screenshots
