@@ -1,0 +1,33 @@
+# Focus windows
+alt - left  : /opt/homebrew/bin/yabai -m window --focus west
+alt - right : /opt/homebrew/bin/yabai -m window --focus east
+alt - up    : /opt/homebrew/bin/yabai -m window --focus north
+alt - down  : /opt/homebrew/bin/yabai -m window --focus south
+
+# Swap windows
+shift + alt - left  : /opt/homebrew/bin/yabai -m window --swap west
+shift + alt - right : /opt/homebrew/bin/yabai -m window --swap east
+shift + alt - up    : /opt/homebrew/bin/yabai -m window --swap north
+shift + alt - down  : /opt/homebrew/bin/yabai -m window --swap south
+
+# Toggle fullscreen
+alt - m : /opt/homebrew/bin/yabai -m window --toggle zoom-parent
+
+# Balance layout
+alt - r : /opt/homebrew/bin/yabai -m window --space --balance
+
+# Toggle float and center
+alt - f : /opt/homebrew/bin/yabai -m window --toggle float && /opt/homebrew/bin/yabai -m window --grid 4:4:1:1:2:2
+
+# Open cava
+alt - c : /opt/homebrew/bin/kitty -o macos_titlebar_style=titlebar-only -T "cava" -e cava
+ 
+# Open new kitty window
+alt - n : /opt/homebrew/bin/kitty &
+
+
+# Close focused window
+alt - w : /opt/homebrew/bin/yabai -m window --close
+
+# Cycle through windows
+alt - 1 : open -a kitty
