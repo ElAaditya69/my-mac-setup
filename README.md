@@ -24,7 +24,7 @@ Follow these steps precisely to get this exact look and functionality on your Ma
 ### 1. Install Homebrew
 If you don't have Homebrew installed yet, open your terminal and run:
 ```bash
-/bin/bash -c "\$(curl -fsSL https://githubusercontent.com)"
+/bin/bash -c "$(curl -fsSL https://githubusercontent.com)"
 ```
 
 ### 2. Install the Core Software
