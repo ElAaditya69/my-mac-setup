@@ -1,24 +1,22 @@
-# 🐉 macOS Sequoia Minimalist Rice
+# 🐲 macOS Sequoia Minimalist Rice
 
-![macOS](https://shields.io)
-![Window Manager](https://shields.io)
-![Terminal](https://shields.io)
+<p align="center">
+  <img src="screenshots/desktop_clean.png" width="48%" />
+  <img src="screenshots/desktop_full.png" width="48%" />
+</p>
 
 A highly optimized tiling window manager setup...
-
-A highly optimized tiling window manager setup...
-
-
-## 📸 Screenshots
-![Desktop Preview](screenshots/desktop.png)
 
 ## ⚙️ System Specs & Software
 - **OS:** macOS Sequoia 15
 - **WM:** [Yabai](https://github.com) (Tiling Window Manager)
 - **Hotkey Daemon:** [skhd](https://github.com)
-- **Terminal:** [Kitty](https://kovidgoyal.net)
+- **Terminal:** Kitty
 - **Status Bar:** SketchyBar
 - **CLI Tools:** `btop` (System Monitor), `cava` (Audio Visualizer), `neo-matrix`
+
+## 🎨 Themes & Aesthetics
+
 
 ## 🎨 Themes & Aesthetics
 - **Colors:** Deep cyberpunk slate background with vivid lavender accents (`#bd93f9`).
