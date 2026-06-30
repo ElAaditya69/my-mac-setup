@@ -25,6 +25,23 @@ A highly optimized tiling window manager setup...
 - **Borders:** Active window highlighting enabled natively via Yabai.
 
 ## 🚀 Quick Start
+## ⚠️ Crucial: System Integrity Protection (SIP)
+To use this layout configuration (especially for window borders and instant workspace focus hopping), Yabai requires its scripting additions to be injected. **You must partially disable SIP on your Mac.** 
+
+> [!WARNING]
+> Do not blindly turn off SIP completely! You can keep your Mac safe by only disabling the specific parts Yabai needs to manage windows.
+
+### How to partially disable SIP for Yabai:
+1. Shut down your Mac.
+2. Hold the **Power Button** to boot into **Recovery Mode**.
+3. Open **Terminal** from the top Utilities menu.
+4. Run the following command to partially disable SIP securely:
+   ```bash
+   csrutil enable --without debug --without fs --without nvram
+   ```
+5. Restart your Mac normally.
+
+
 To clone and browse these configuration files locally:
 \`\`\`bash
 git clone https://github.com
