@@ -1,0 +1,8 @@
+format = """
+[╭](cyan)[🐉 Aaditya69](red bold) 📁 [$directory](white)
+[╰❯](cyan)"""
+
+[directory]
+style = "white"
+format = "[$path]($style) "
+truncation_length = 3

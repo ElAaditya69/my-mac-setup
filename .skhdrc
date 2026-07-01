@@ -1,14 +1,14 @@
 # Focus windows
-alt - left  : /opt/homebrew/bin/yabai -m window --focus west
+alt - left : /opt/homebrew/bin/yabai -m window --focus west
 alt - right : /opt/homebrew/bin/yabai -m window --focus east
-alt - up    : /opt/homebrew/bin/yabai -m window --focus north
-alt - down  : /opt/homebrew/bin/yabai -m window --focus south
+alt - up : /opt/homebrew/bin/yabai -m window --focus north
+alt - down : /opt/homebrew/bin/yabai -m window --focus south
 
 # Swap windows
-shift + alt - left  : /opt/homebrew/bin/yabai -m window --swap west
+shift + alt - left : /opt/homebrew/bin/yabai -m window --swap west
 shift + alt - right : /opt/homebrew/bin/yabai -m window --swap east
-shift + alt - up    : /opt/homebrew/bin/yabai -m window --swap north
-shift + alt - down  : /opt/homebrew/bin/yabai -m window --swap south
+shift + alt - up : /opt/homebrew/bin/yabai -m window --swap north
+shift + alt - down : /opt/homebrew/bin/yabai -m window --swap south
 
 # Toggle fullscreen
 alt - m : /opt/homebrew/bin/yabai -m window --toggle zoom-parent
@@ -21,13 +21,26 @@ alt - f : /opt/homebrew/bin/yabai -m window --toggle float && /opt/homebrew/bin/
 
 # Open cava
 alt - c : /opt/homebrew/bin/kitty -o macos_titlebar_style=titlebar-only -T "cava" -e cava
- 
+
 # Open new kitty window
 alt - n : /opt/homebrew/bin/kitty &
-
 
 # Close focused window
 alt - w : /opt/homebrew/bin/yabai -m window --close
 
 # Cycle through windows
 alt - 1 : open -a kitty
+
+# Audio mode toggles
+alt - f10 : ~/normal-mode.sh
+alt - f11 : ~/cava-mode.sh
+
+# Volume control (works with any audio device)
+f10 : osascript -e 'set volume output muted not (output muted of (get volume settings))'
+f11 : osascript -e 'set volume output volume (output volume of (get volume settings) - 6)'
+f12 : osascript -e 'set volume output volume (output volume of (get volume settings) + 6)'
+
+# Manual volume control (works with any audio device)
+f10 : osascript -e 'set volume output muted not (output muted of (get volume settings))'
+f11 : osascript -e 'set volume output volume (output volume of (get volume settings) - 6)'
+f12 : osascript -e 'set volume output volume (output volume of (get volume settings) + 6)'

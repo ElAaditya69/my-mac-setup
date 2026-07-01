@@ -1,0 +1,111 @@
+#!/bin/bash
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+# Declare central hook event targets
+sketchybar --add event window_change
+sketchybar --add event space_change
+
+# Configure unified bar framework layout
+sketchybar --bar height=30 blur_radius=15 position=top padding_left=15 padding_right=15 color=0xCC1e1e2e margin=0 y_offset=0 shadow=off display=main sticky=on
+
+# Set global fallback element attributes
+sketchybar --default icon.font="JetBrainsMono Nerd Font:Bold:13.0" label.font="JetBrainsMono Nerd Font:Bold:12.0" icon.color=0xFFCDD6F4 label.color=0xFFCDD6F4 background.color=0x00000000 padding_left=4 padding_right=4
+
+# LEFT 1: Host Identity Capsule
+sketchybar --add item title left \
+           --set title icon= \
+                       icon.font="JetBrainsMono Nerd Font:Bold:12.0" \
+                       icon.color=0xFFA6E3A1 \
+                       label="Aaditya69" \
+                       label.color=0xFFCDD6F4 \
+                       background.color=0x25FFFFFF \
+                       background.corner_radius=6 \
+                       background.height=22 \
+                       background.drawing=on \
+                       icon.padding_left=8 \
+                       icon.padding_right=4 \
+                       label.padding_right=8 \
+                       padding_left=4 \
+                       padding_right=10
+
+# LEFT 2: Clear, Identifiable System Uptime Tracker
+sketchybar --add item uptime left \
+           --set uptime icon=   \
+                        icon.font="JetBrainsMono Nerd Font:Bold:13.0" \
+                        icon.color=0xFFA6E3A1 \
+                        label.color=0xFFA6E3A1 \
+                        padding_left=6 \
+                        padding_right=24 \
+                        script="$PLUGIN_DIR/uptime.sh" \
+                        update_freq=60
+
+# LEFT 3: Clean Space Indicators Loop
+SPACE_ITEMS=()
+for sid in $(yabai -m query --spaces | jq -r '.[].index'); do
+  SPACE_ITEMS+=("space.$sid")
+  sketchybar --add item space.$sid left \
+             --set space.$sid icon=$sid \
+                              icon.font="JetBrainsMono Nerd Font:Bold:11.0" \
+                              label.drawing=off \
+                              icon.color=0xFF6C7086 \
+                              padding_left=6 \
+                              padding_right=6 \
+                              click_script="yabai -m space --focus $sid" \
+             --subscribe space.$sid space_change window_change front_app_switched
+done
+
+# Left Space Capsule Bracket
+sketchybar --add bracket space_capsule "${SPACE_ITEMS[@]}" \
+           --set space_capsule background.color=0x33585B70 \
+                               background.corner_radius=6 \
+                               background.height=22 \
+                               background.drawing=on \
+                               padding_left=10 \
+                               padding_right=14
+
+sketchybar --add item space_indicator left \
+           --set space_indicator script="$PLUGIN_DIR/space_indicator.sh" label="" icon="" padding_left=0 padding_right=0 \
+           --subscribe space_indicator space_change window_change front_app_switched
+
+# LEFT 4: Front active app tracker
+sketchybar --add item front_app left \
+           --set front_app script="$PLUGIN_DIR/front_app.sh" icon.color=0xFF89B4FA label.color=0xFF89B4FA padding_left=14 \
+           --subscribe front_app front_app_switched window_change space_change
+
+# RIGHT: Essential Modular Monitors
+sketchybar --add item clock right --set clock update_freq=1 icon= script="$PLUGIN_DIR/clock.sh" icon.color=0xFF89B4FA label.color=0xFF89B4FA padding_left=12 padding_right=6
+sketchybar --add item date right --set date update_freq=60 icon= script="$PLUGIN_DIR/date.sh" icon.color=0xFF89B4FA label.color=0xFF89B4FA padding_left=12 padding_right=12
+
+# FIXED TARGET LINE: This forces the icon engine layer back to ON state for the battery
+sketchybar --add item battery right --set battery update_freq=5 script="$PLUGIN_DIR/battery.sh" icon.drawing=on padding_left=12 padding_right=12
+
+sketchybar --add item cpu_load right --set cpu_load update_freq=2 icon= script="$PLUGIN_DIR/cpu_load.sh" icon.color=0xFFF9E2AF label.color=0xFFF9E2AF padding_left=12 padding_right=12
+
+# FIXED WIDTH LAYOUT MODULES
+sketchybar --add item network right --set network update_freq=2 icon= script="$PLUGIN_DIR/network.sh" icon.color=0xFF30D68C label.color=0xFF30D68C label.width=85 padding_left=12 padding_right=12
+sketchybar --add item volume right --set volume update_freq=1 icon= icon.color=0xFFFFD700 label.color=0xFFFFD700 script="$PLUGIN_DIR/volume.sh" padding_left=12 padding_right=12
+
+# THE TRUE PILL MUSIC MOD
+sketchybar --add item music right \
+           --set music update_freq=5 \
+                       label.color=0xFFF39F98 \
+                       icon.drawing=off \
+                       padding_left=4 \
+                       padding_right=12 \
+                       script="$PLUGIN_DIR/music.sh"
+
+sketchybar --add item music_icon right \
+           --set music_icon icon= \
+                            icon.font="JetBrainsMono Nerd Font:Bold:10.0" \
+                            icon.color=0xFF1e1e2e \
+                            background.color=0xFFF39F98 \
+                            background.corner_radius=10 \
+                            background.height=18 \
+                            background.drawing=on \
+                            icon.padding_left=5 \
+                            icon.padding_right=5 \
+                            label.drawing=off \
+                            padding_left=12 \
+                            padding_right=0
+sketchybar --update
