@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "🌿 Switching to Battery Mode..."
+
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.asmvik.yabai.plist 2>/dev/null
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.koekeishiya.skhd.plist 2>/dev/null
+
+brew services stop borders >/dev/null 2>&1
+brew services stop sketchybar >/dev/null 2>&1
+
+killall "Background Music" 2>/dev/null
+killall SketchyBar 2>/dev/null
+
+SwitchAudioSource -s "MacBook Air Speakers" >/dev/null 2>&1
+
+echo ""
+echo "🌿 Battery Mode Enabled!"

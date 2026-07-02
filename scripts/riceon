@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "🍚 Switching to Rice Mode..."
+
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.asmvik.yabai.plist 2>/dev/null
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.koekeishiya.skhd.plist 2>/dev/null
+
+brew services start borders >/dev/null 2>&1
+brew services start sketchybar >/dev/null 2>&1
+
+open -a "Background Music"
+
+sleep 2
+
+SwitchAudioSource -s "Background Music"
+
+echo ""
+echo "🍚 Rice Mode Enabled!"

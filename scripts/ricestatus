@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "🍚 Rice Status"
+echo "----------------"
+
+pgrep yabai >/dev/null && echo "✅ yabai" || echo "❌ yabai"
+pgrep skhd >/dev/null && echo "✅ skhd" || echo "❌ skhd"
+
+brew services list | grep sketchybar | grep started >/dev/null \
+&& echo "✅ SketchyBar" \
+|| echo "❌ SketchyBar"
